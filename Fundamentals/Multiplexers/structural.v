@@ -1,3 +1,13 @@
+`timescale 1ns / 1ps // `timescale <time_unit>/<time_precision> 
+//////////////////////////////////////////////////////////////////////////////////
+// Author: Lauren Chambers
+//         laalcham@ucsc.edu
+// 
+// Project: Logic Design Fundamentals: Multiplexers
+// File Name: structural.v
+// Dependencies: none
+// Description: various implementations of multiplexers using structural Verilog 
+//////////////////////////////////////////////////////////////////////////////////
 
 //
 // MULTIPLEX 1 bit out of 4 bits
