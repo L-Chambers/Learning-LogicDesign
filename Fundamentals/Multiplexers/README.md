@@ -1,5 +1,5 @@
 # Logic Design Fundamentals: Multiplexers
-A multiplexer is a combinational logic circuit that is used to forward a single input from a set of inputs. The selection of an input is driven by a separate set of inputs that make up a select line. he input set can be a set of single bits or a set of multiple bits (buses). For a multiplexer with 2^n inputs, you need a select line with n bits.
+A multiplexer is a combinational logic circuit that is used to forward a single input from a set of inputs. The selection of an input is driven by a separate set of inputs that make up a select line. The input set can be a set of single bits or a set of multiple bits (buses). For a multiplexer with 2^n inputs, you need a select line with n bits.
 
 Multiplexers can be used to implement logic functions. The choice of select bits from a set of inputs can affect hardware costs.
 
@@ -34,16 +34,18 @@ We could do something similar to the 4:1, using the following truth table:
 | 0      | 0      | 1      | in[1] |
 | 0      | 1      | 0      | in[2] |
 | 0      | 1      | 1      | in[3] |
-| 1      | 0      | 0      | in[4] |
-| 1      | 0      | 1      | in[4] |
-| 1      | 1      | 0      | in[6] |
-| 1      | 1      | 1      | in[7] |
+| <mark>1</mark>      | 0      | 0      | in[4] |
+| <mark>1</mark>      | 0      | 1      | in[4] |
+| <mark>1</mark>      | 1      | 0      | in[6] |
+| <mark>1</mark>      | 1      | 1      | in[7] |
 
 
-The SOP for this would have 8 terms and be tedious to write out. Notice that for minterms 0-3, sel[2] is 0, and for inputs 4-7, sel[1] is 1. The input set is split naturally into 2 groups of 4. We can use two 4:1 multiplexers to get the input who's # matches two bits of sel, and have a 2:1 mux (a simple assign statament) to pick the input with the matching sel[2] value. 
+The SOP for this would have 8 terms and be tedious to write out. Notice that for minterms 0-3, sel[2] is 0, and for minterms 4-7, sel[2] is 1: the input set is split naturally into 2 groups of 4.
+
+We can use two 4:1 multiplexers to forward the inputs for the minterms that matches bits 0 and 1 of sel, and have a 2:1 mux (a simple assign statament) forwards the input whose minterm matches the value of sel[2]. 
 
 ### **multiplexer 0**
-The input set for multiplexer 0 is input options 0, 1, 2, and 3. 
+The minterm set for multiplexer 0 is input options 0, 1, 2, and 3. 
 |sel[1]|sel[0]|   out0|
 |------|------|------|
 |     0|     0| in[0]|   
@@ -52,7 +54,7 @@ The input set for multiplexer 0 is input options 0, 1, 2, and 3.
 |     1|     1| in[3]|
 
 ### **multiplexer 1**
-The input set for multiplexer 1 has options 4, 5, 6, and 7.
+The minterm set for multiplexer 1 has options 4, 5, 6, and 7.
 |sel[1]|sel[0]|   out1|
 |------|------|------|
 |     0|     0| in[4]|   
