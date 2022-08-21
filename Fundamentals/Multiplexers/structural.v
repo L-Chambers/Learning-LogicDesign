@@ -33,10 +33,11 @@ module mux_8to1(
 )
 
   wire msbis0, msbis1;
-
+  
   mux_4to1 inputs0to3 (.in(in[3:0]), .sel(sel[1:0]), .o(msbis0));
   mux_4to1 inputs4to7 (.in(in[7:4]), .sel(sel[1:0]), .o(msbis1));
 
+  // this is effectively a 2:1 multiplexer
   assign o = (sel[2] & msbis1) | (~sel[2] & msbis0);
 
 endmodule
